@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMSUNG Galaxy S24 FE AI Phone</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #4285f4;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #70757a;
+            --light-gray: #dadce0;
+            --success: #0f9d58;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .price-tag {
+            background-color: var(--success);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .price-tag:hover {
+            transform: scale(1.05);
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stars {
+            color: gold;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .product-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .product-images {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .thumbnail {
+            width: 80px;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .feature-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .specs-table th, .specs-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .specs-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .specs-table tr:hover {
+            background-color: rgba(66, 133, 244, 0.1);
+        }
+        
+        .box-contents {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        
+        .box-contents ul {
+            list-style: disc;
+            padding-left: 2rem;
+        }
+        
+        .reviews {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        
+        .review-chart {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .chart-label {
+            width: 120px;
+        }
+        
+        .chart-bar {
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+        
+        .buy-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .buy-button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-display {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SAMSUNG Galaxy S24 FE</h1>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>SAMSUNG Galaxy S24 FE AI Phone</h1>
+        <p>128GB Unlocked Android Smartphone with High-Res 50MP Camera, Long Battery Life, and Brighter Display Screen. US Version, 2024 model with US 1 Yr Manufacturer Warranty. Color: Graphite.</p>
+        <div class="price-tag">$649.99 USD</div>
+        <div class="rating">
+            <div class="stars">★★★★<span style="opacity:0.5">★</span></div>
+            <span>4.5 out of 5 stars (869 ratings)</span>
+        </div>
+        <button class="buy-button">Buy Now</button>
+    </section>
+    
+    <div class="container">
+        <div class="product-display">
+            <div class="product-images">
+                <img src="https://m.media-amazon.com/images/I/41U3tn6QAQL._AC_SL1500.jpg" alt="Samsung Galaxy S24 FE" class="main-image" id="mainImage">
+                <div>
+                    <img src="https://m.media-amazon.com/images/I/41U3tn6QAQL._AC_SL1500.jpg" alt="Front view" class="thumbnail" onclick="changeImage(this.src)">
+                    <img src="https://m.media-amazon.com/images/I/21Te+vDd1uL._AC_SL1500.jpg" alt="Side view" class="thumbnail" onclick="changeImage(this.src)">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h2 class="section-title">Key Features</h2>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>MOVE IT. REMOVE IT. IMPROVE IT:</strong> Take a great pic, then make it better using Photo Assist with Galaxy AI. It gives you suggestions for improving your photo and makes it easier to move, remove or resize objects for post-worthy pics every time.</li>
+                    <li class="feature-item"><strong>NEVER BE LOST IN TRANSLATION AGAIN:</strong> Understand text, calls and in-person conversations in another language using real-time translations with Galaxy AI.</li>
+                    <li class="feature-item"><strong>SLOW-MO MADE SIMPLE:</strong> Sometimes you just want to make the moment last longer. Using Instant Slow-Mo with Galaxy AI, simply tap and hold to replay any video in epic slow motion.</li>
+                    <li class="feature-item"><strong>DO MORE W/ EPIC BATTERY POWER:</strong> Do what you love, whether work or play, without worrying about your battery. Galaxy S24 FE intuitively manages your apps to make your charge last longer.</li>
+                    <li class="feature-item"><strong>CAPTURE HIGHLIGHTS IN LOW LIGHT:</strong> Poorly lit portraits? Not anymore. Bring details out of the dark with Night Portrait. Using AI, your Galaxy S24 FE can analyze and optimize your low-light shots and make them shine.</li>
+                </ul>
+                
+                <h2 class="section-title">Specifications</h2>
+                <table class="specs-table">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Specification</th>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>One UI 6.1, Android 14</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>8 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>128 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Screen Size</td>
+                        <td>6.7 Inches</td>
+                    </tr>
+                    <tr>
+                        <td>Resolution</td>
+                        <td>2340 x 1080 (FHD+), 120Hz Refresh Rate, 1,900nits (peak)</td>
+                    </tr>
+                    <tr>
+                        <td>Battery Capacity</td>
+                        <td>4700 Milliamp Hours</td>
+                    </tr>
+                </table>
+                
+                <h2 class="section-title">What's in the box</h2>
+                <div class="box-contents">
+                    <ul>
+                        <li>Galaxy S24 FE</li>
+                        <li>Charging Cable (USB type C) - Cable only</li>
+                        <li>SIM Tray Ejector</li>
+                        <li>Quick Start Guide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews">
+            <p>Customers praise the phone's:</p>
+            
+            <div class="review-chart">
+                <div class="chart-label">Camera Quality</div>
+                <div class="chart-bar" style="width: 0%;" data-width="95%"></div>
+                <span style="margin-left: 10px;">95%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Display</div>
+                <div class="chart-bar" style="width: 0%;" data-width="90%"></div>
+                <span style="margin-left: 10px;">90%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Speed</div>
+                <div class="chart-bar" style="width: 0%;" data-width="88%"></div>
+                <span style="margin-left: 10px;">88%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Functionality</div>
+                <div class="chart-bar" style="width: 0%;" data-width="92%"></div>
+                <span style="margin-left: 10px;">92%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Battery Life</div>
+                <div class="chart-bar" style="width: 0%;" data-width="85%"></div>
+                <span style="margin-left: 10px;">85%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Features</div>
+                <div class="chart-bar" style="width: 0%;" data-width="94%"></div>
+                <span style="margin-left: 10px;">94%</span>
+            </div>
+            
+            <div class="review-chart">
+                <div class="chart-label">Value for Money</div>
+                <div class="chart-bar" style="width: 0%;" data-width="89%"></div>
+                <span style="margin-left: 10px;">89%</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 2rem 0;">
+            <button class="buy-button">Buy Now</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SAMSUNG Galaxy S24 FE Product Page</p>
+            <p>This is a demo website for the SAMSUNG Galaxy S24 FE AI Phone</p>
+        </div>
+    </footer>
+    
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+        
+        // Animate review charts on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const charts = document.querySelectorAll('.chart-bar');
+                charts.forEach(chart => {
+                    chart.style.width = chart.dataset.width;
+                });
+            }, 300);
+        });
+        
+        // Add smooth scrolling for buttons
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Thank you for your interest in the Samsung Galaxy S24 FE!');
+            });
+        });
+    </script>
+</body>
+</html>
